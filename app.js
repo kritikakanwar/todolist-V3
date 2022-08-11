@@ -134,6 +134,6 @@ console.log(req.params.customListName);
 // res.render("list",{listTitle:worklist,newlistitems:worklists})
 });
 
-app.listen(3000,function (){
+app.listen(process.env.PORT||3000,function (){
 console.log("server started at port 3000");
 });
