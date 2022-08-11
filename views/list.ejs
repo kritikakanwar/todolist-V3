@@ -1,0 +1,26 @@
+<%- include('header'); -%>
+    <div class="box">
+        <h1 id="heading"style="color: purple;"> <%=listTitle%></h1>
+
+    </div>
+<div class="box">
+<!-- newlistitems is the array from app.js page in app.get root route -->
+<%newlistitems.forEach(function(item){%>
+<!-- this /delete route is responsible for deleteing items   -->
+    <form action="/delete" method="post">
+    <div class="item">
+        <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+        <p style="color:blueviolet"><%=item.name%></p>
+      </div>
+      <input type="hidden" name="listname" value="<%=listTitle%>">
+    </form>
+      <%})%>
+
+    
+<!-- this form is rsponsiblr for adding new item -->
+       <form class="item" action="/" method="post">
+          <input type="text" name="newitem" placeholder="New Item" autocomplete="off">
+          <button type="submit" name="listbutton" value="<%=listTitle%>">+</button>
+       </form>   
+</div>  
+<%- include('footer'); -%>
