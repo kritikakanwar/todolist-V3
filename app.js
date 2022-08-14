@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express=require('express');
 const bodyparser=require('body-parser');
 const mongoose=require('mongoose');
@@ -8,7 +9,8 @@ const app=express();
 app.set('view engine','ejs');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
-mongoose.connect('mongodb+srv://admin-kritika:cyclotron@cluster0.bhxnfqt.mongodb.net/tododb');
+mongoose.connect(process.env.DB_CONNECTION);
+
 const itemsschema=new mongoose.Schema({
 name:String
 });
